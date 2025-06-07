@@ -79,5 +79,5 @@ if st.button("Get the result"):
     # Print the result
     if result.status == "succeeded":
         st.write(result.output['final_plan'])
-    # else:
-    #     print(f"Error: {result.error}")
+    else:
+        print(f"Error: {result.error}")
