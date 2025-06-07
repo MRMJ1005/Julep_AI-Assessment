@@ -4,6 +4,7 @@ A Streamlit-powered web app that helps users plan their *perfect day* using the 
 
 > “Your perfect day is just a click away.”
 > ![Screenshot 2025-06-07 235404](https://github.com/user-attachments/assets/76445ebc-6080-4336-b2d8-6289d1116ac3)
+![Screenshot 2025-06-07 235350](https://github.com/user-attachments/assets/05a8e3eb-d8ad-46d2-8c1d-ee7d1824df22)
 
 ---
 
