@@ -3,6 +3,8 @@
 A Streamlit-powered web app that helps users plan their *perfect day* using the power of Julep Agentic AI.
 
 > “Your perfect day is just a click away.”
+> 
+![Screenshot 2025-06-07 235404](https://github.com/user-attachments/assets/76445ebc-6080-4336-b2d8-6289d1116ac3)
 
 ---
 
@@ -36,6 +38,9 @@ This project showcases how to integrate **Julep’s agentic task execution** int
 ## Video Presentation 
 
 ---
-## Future Advancements
+### 🔮 Future Advancements  
+We plan to integrate voice interaction using TTS/ASR for a conversational planning experience.  
+Location-based weather, traffic, and calendar syncing are also on the roadmap.  
+The goal is to evolve this into a smart, AI-powered personal assistant for daily life.
 
 
