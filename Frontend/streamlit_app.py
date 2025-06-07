@@ -17,13 +17,11 @@ st.title("A Perfect DAY exists NOW !! - with the help of Julep Agent🤖 ")
 st.write("Hi!I am Riya your perfect day planner! I will help you plan your day in a perfect way! So what kind of a day you want to have?")
 
 # Create a dropdown for day plan selection
-day_plans = [
-    "A romantic Day",
-    "An Adventurous one",
-    "A foodie tour of the city",
-    "A Tourist plan"
+day_plans = ["❤️ A romantic Day",
+    "🏞️ An Adventurous one",
+    "🍕 A foodie tour of the city",
+    "🗺️ A Tourist plan"
 ]
-
 selected_plan = st.selectbox(
     "Choose your perfect day plan:",
     day_plans,
@@ -50,13 +48,13 @@ if st.button("Get the result"):
     JULEP_API_KEY = os.getenv("JULEP_API_KEY")
     client = create_client(JULEP_API_KEY)
     agent = create_agent(client)
-    if selected_plan == "A romantic Day":
+    if selected_plan == "❤️ A romantic Day":
         yaml_file_path = os.path.join(parent_dir, 'YAML Files\\romantic_day_planning.yaml')
-    if selected_plan == "An Adventurous one":
+    if selected_plan == "🏞️ An Adventurous one":
         yaml_file_path = os.path.join(parent_dir, 'YAML Files\\adventurous_day_plan.yaml')
-    if selected_plan == "A foodie tour of the city":
+    if selected_plan == "🍕 A foodie tour of the city":
         yaml_file_path = os.path.join(parent_dir, 'YAML Files\\foodie_day_planner.yaml')
-    if selected_plan == "A Tourist plan":
+    if selected_plan == "🗺️ A Tourist plan":
         yaml_file_path = os.path.join(parent_dir, 'YAML Files\\tourist_plan.yaml')
     
     with open(yaml_file_path, 'r') as file:
