@@ -35,3 +35,7 @@ This project showcases how to integrate **Julep’s agentic task execution** int
 
 ## Video Presentation 
 
+---
+## Future Advancements
+
+
