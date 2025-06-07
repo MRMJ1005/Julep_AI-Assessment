@@ -1,0 +1,101 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/julep-ai/julep/refs/heads/dev/schemas/create_task_request.json
+name: Julep Trip Planning Task
+description: A Julep agent that can generate a detailed itinerary for visiting tourist attractions in some locations, considering the current weather conditions.
+
+########################################################
+################### INPUT SCHEMA #######################
+########################################################
+
+input_schema:
+  type: object
+  properties:
+    locations:
+      type: array
+      items:
+        type: string
+      description: The locations to search for.
+
+########################################################
+################### TOOLS ##############################
+########################################################
+
+tools:
+- name: wikipedia
+  type: integration
+  integration:
+    provider: wikipedia
+
+- name: weather
+  type: integration
+  integration:
+    provider: weather
+    setup:
+      openweathermap_api_key: "e127b840751043983c71e32fca35e674"
+
+- name: brave_search
+  type: integration
+  integration:
+    provider: brave
+    method: search
+    setup:
+      brave_api_key: "BSAB2Qp0QkKywZRKC-U-_SPmv8NiaKa"
+
+
+########################################################
+################### MAIN WORKFLOW ######################
+########################################################
+
+main:
+- over: $ steps[0].input.locations
+  map:
+    tool: weather
+    arguments:
+      location: $ _
+
+- over: $ steps[0].input.locations
+  map:
+    tool: brave_search
+    arguments:
+      query: $ 'top 3 tourist places to visit in ' + _
+
+# Zip locations, weather, and attractions into a list of tuples [(location, weather, attractions)]
+- evaluate:
+    zipped: |-
+      $ list(
+        zip(
+          steps[0].input.locations,
+          [output['result'] for output in steps[0].output],
+          steps[1].output
+        )
+      )
+
+
+- over: $ _['zipped']
+  parallelism: 2
+  # Inside the map step, each `_` represents the current element in the list
+  # which is a tuple of (location, weather, attractions)
+  map:
+    prompt:
+    - role: system
+      content: >-
+        $ f'''You are {agent.name}. Your task is to create a detailed itenary of foods to eat for each location for break fast, lunch,
+        dinner based on the weather condition and suggest outdoor dining or indoor dining based on the weather condition.
+        The user will give you the following information for each location:
+
+        - The location
+        - The current weather condition
+        - The top 3 tourist places to visit
+        '''
+    - role: user
+      content: >-
+        $ f'''Location: "{_[0]}"
+        Weather: "{_[1]}"
+        Top 3 tourist places to visit: "{_[2]}"
+        "'''
+    unwrap: true
+
+- evaluate:
+    final_plan: |-
+      $ '\\n---------------\\n'.join(activity for activity in _)
+
+

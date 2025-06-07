@@ -1,0 +1,6 @@
+julep
+streamlit 
+langchain
+langgraph
+numpy
+python-dotenv
