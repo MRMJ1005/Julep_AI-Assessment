@@ -37,10 +37,14 @@ This project showcases how to integrate **Julep’s agentic task execution** int
 
 ## Video Presentation 
 
+
+https://github.com/user-attachments/assets/d48f0dcf-1117-424b-b7b1-bb034220c921
+
+
 ---
 ### 🔮 Future Advancements  
-We plan to integrate voice interaction using TTS/ASR for a conversational planning experience.  
-Location-based weather, traffic, and calendar syncing are also on the roadmap.  
-The goal is to evolve this into a smart, AI-powered personal assistant for daily life.
+- We plan to integrate voice interaction using TTS/ASR for a conversational planning experience.  
+- Location-based weather, traffic, and calendar syncing are also on the roadmap.  
+- The goal is to evolve this into a smart, AI-powered personal assistant for daily life.
 
 
